@@ -40,7 +40,7 @@ private:
 };
 
 template <class T>
-SharedMem<T>::SharedMem(T* ptr) > : m_ptr(ptr) {
+SharedMem<T>::SharedMem(T* ptr) : m_ptr(ptr) {
 }
 
 template <class T>
