@@ -22,6 +22,9 @@
 
 #include <string.h>
 
+namespace flowie
+{
+
 template <class T>
 class SharedMem
 {
@@ -180,6 +183,8 @@ void SharedPtr<T>::clone(const SharedPtr<T> &other) {
     T* ptr = new T();
     memcpy(ptr, other.get(), sizeof(T));
     reset(ptr);
+}
+
 }
 
 #endif
