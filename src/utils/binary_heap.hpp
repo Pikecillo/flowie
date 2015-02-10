@@ -55,7 +55,7 @@ private:
 
 private:
     HeapType m_type;
-    std::vector<T> m_data;
+    std::vector<T> m_items;
 };
 
 template <class T>
@@ -64,24 +64,24 @@ BinaryHeap<T>::BinaryHeap(HeapType type) : m_type(type) {}
 template <class T>
 inline
 unsigned int BinaryHeap<T>::size() const {
-    return m_data.size();
+    return m_items.size();
 }
 
 template <class T>
 inline
 T BinaryHeap<T>::top() const {
-    return m_data[0];
+    return m_items[0];
 }
 
 template <class T>
 T BinaryHeap<T>::pop() {
-    if(m_data.empty())
+    if(m_items.empty())
 	throw("Heap underflow");
     
-    T max = m_data[0];
+    T max = m_items[0];
     
-    m_data[0] = m_data.back();
-    m_data.pop_back();
+    m_items[0] = m_items.back();
+    m_items.pop_back();
     heapify(0);
     
     return max;
@@ -95,12 +95,12 @@ void BinaryHeap<T>::insert(const std::vector<T> &elements) {
 
 template <class T>
 void BinaryHeap<T>::insert(const T &element) {
-    unsigned int e = m_data.size();    
+    unsigned int e = m_items.size();    
 
-    m_data.push_back(element);
+    m_items.push_back(element);
     
-    while(e > 0 && comp(m_data[e], m_data[parent_idx(e)])) {
-	std::swap(m_data[parent_idx(e)], m_data[e]);
+    while(e > 0 && comp(m_items[e], m_items[parent_idx(e)])) {
+	std::swap(m_items[parent_idx(e)], m_items[e]);
 	e = parent_idx(e);
     }
 }
@@ -139,14 +139,14 @@ void BinaryHeap<T>::heapify(unsigned int i) {
     unsigned left = left_child_idx(i), right = right_child_idx(i);
     unsigned int idx = i;
     
-    if(left < m_data.size() && comp(m_data[left], m_data[idx]))
+    if(left < m_items.size() && comp(m_items[left], m_items[idx]))
 	idx = left;
     
-    if(right <= m_data.size() && comp(m_data[right], m_data[idx]))
+    if(right <= m_items.size() && comp(m_items[right], m_items[idx]))
 	idx = right;
     
     if(idx != i) {
-	std::swap(m_data[i], m_data[idx]);
+	std::swap(m_items[i], m_items[idx]);
 	heapify(idx);
     }
 }
