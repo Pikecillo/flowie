@@ -36,11 +36,9 @@ public:
     BinaryHeap(HeapType type);
 
     unsigned int size() const;
-    bool empty();
-
+    bool empty() const;
     T top() const;
     T pop();
-
     void insert(const std::vector<T> &elements);
     void insert(const T &element);
 
@@ -49,7 +47,7 @@ private:
     unsigned int left_child_idx(unsigned int i) const;
     unsigned int right_child_idx(unsigned int i) const;
     
-    bool comp(const T &a, const T &b);
+    bool comp(const T &a, const T &b) const;
 
     void heapify(unsigned int i);
 
@@ -107,7 +105,7 @@ void BinaryHeap<T>::insert(const T &element) {
 
 template <class T>
 inline
-bool BinaryHeap<T>::empty() {
+bool BinaryHeap<T>::empty() const {
     return (size() == 0);
 }
 
@@ -130,7 +128,7 @@ unsigned int BinaryHeap<T>::right_child_idx(unsigned int i) const {
 }
 
 template <class T>
-bool BinaryHeap<T>::comp(const T &a, const T &b) {
+bool BinaryHeap<T>::comp(const T &a, const T &b) const {
     return (m_type == MAX ? a > b : a < b);
 }
 
