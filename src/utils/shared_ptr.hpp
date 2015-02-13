@@ -44,6 +44,7 @@ private:
 
 template <class T>
 SharedMem<T>::SharedMem(T* ptr) : m_ptr(ptr) {
+    m_use_count = ptr ? 1 : 0;
 }
 
 template <class T>
