@@ -25,7 +25,7 @@
 namespace flowie
 {
 
-std::vector<int> rand_range(int lo, int hi, int n);
+std::vector<int> rand_range(int lo, int hi, unsigned int n);
 
 }
 

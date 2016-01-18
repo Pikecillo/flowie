@@ -24,10 +24,10 @@
 namespace flowie
 {
 
-std::vector<int> rand_range(int lo, int hi, int n) {
+std::vector<int> rand_range(int lo, int hi, unsigned int n) {
     std::vector<int> elements;
     
-    for(int i = 0; i < n; i++) {
+    for(unsigned int i = 0; i < n; i++) {
 	int random = rand() % (hi - lo) + lo;
 	elements.push_back(random);
     }
